@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DartTrip 飛鏢旅行</title>
+<title>Tosstination 飛鏢旅行</title>
 <meta name="description" content="把紙飛機當成飛鏢，拖曳射出後，飛機降落在地圖上的哪裡，下一趟旅行就去哪裡。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✈️%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,11 +51,11 @@
     position: relative;
     z-index: 20;
   }
-  .logo { font-weight: 900; font-size: 22px; letter-spacing: 0.5px; }
+  .logo { font-weight: 900; font-size: 22px; letter-spacing: 0.5px; white-space: nowrap; }
   .logo span { color: var(--accent); }
   .tabs { display: flex; gap: 4px; background: var(--ui); padding: 4px; border-radius: 999px; }
   .tabs button {
-    border: 0; background: transparent; padding: 6px 16px; border-radius: 999px; font-weight: 700;
+    border: 0; background: transparent; padding: 6px 16px; border-radius: 999px; font-weight: 700; white-space: nowrap;
     color: var(--muted); transition: background 0.2s, color 0.2s;
   }
   .tabs button[aria-selected="true"] { background: var(--paper); color: var(--ink); }
@@ -192,11 +192,16 @@
     .dest b { font-size: 20px; }
     .barcode { margin: 0 0 0 auto; height: 30px; width: 70px; }
   }
+  @media (max-width: 360px) {
+    header { padding: 0 8px; gap: 6px; }
+    .logo { font-size: 16px; }
+    .tabs button { padding: 5px 8px; font-size: 13px; }
+  }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">DartTrip <span>✈</span></div>
+  <div class="logo">Tosstination <span>✈</span></div>
   <nav class="tabs" role="tablist" aria-label="選擇地圖">
     <button role="tab" data-map="taiwan">台灣</button>
     <button role="tab" data-map="japan">日本</button>
@@ -247,7 +252,7 @@
 
   <section id="pass" aria-live="polite" aria-hidden="true">
     <div class="pass-main">
-      <div class="pass-top"><span>✈ DARTTRIP AIRLINES</span><span>BOARDING PASS 登機證</span></div>
+      <div class="pass-top"><span>✈ TOSSTINATION AIRLINES</span><span>BOARDING PASS 登機證</span></div>
       <div class="route">
         <div><small>FROM</small><b class="mono">TPE</b><span>台北</span></div>
         <div class="fly">✈</div>
@@ -639,10 +644,10 @@ const MAPS = {"taiwan":{"label":"台灣","viewBox":[600,800],"insets":[{"x":14,"
   $("#share").addEventListener("click", async () => {
     if (!result) return;
     const r = result.region;
-    const text = `✈ DartTrip 飛鏢旅行：我的紙飛機降落在 ${r.f ? r.f + " " : ""}${r.n}（${r.e}），下一趟就去這裡！航班 ${result.flight}`;
+    const text = `✈ Tosstination 飛鏢旅行：我的紙飛機降落在 ${r.f ? r.f + " " : ""}${r.n}（${r.e}），下一趟就去這裡！航班 ${result.flight}`;
     const mobile = matchMedia("(pointer: coarse)").matches;
     if (mobile && navigator.share) {
-      try { await navigator.share({ title: "DartTrip 飛鏢旅行", text, url: location.href }); } catch {}
+      try { await navigator.share({ title: "Tosstination 飛鏢旅行", text, url: location.href }); } catch {}
       return;
     }
     try {
