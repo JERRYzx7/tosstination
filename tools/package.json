@@ -1,0 +1,19 @@
+{
+  "name": "darttrip-map-build",
+  "private": true,
+  "type": "module",
+  "description": "產生 index.html 內嵌的 SVG 地圖資料",
+  "scripts": {
+    "build": "node build-maps.mjs"
+  },
+  "dependencies": {
+    "@mapbox/geojson-rewind": "^0.5.2",
+    "d3-geo": "^3.1.1",
+    "i18n-iso-countries": "^7.14.0",
+    "mapshaper": "^0.7.83",
+    "opencc-js": "^1.4.2",
+    "taiwan-atlas": "^2021.9.20",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}
